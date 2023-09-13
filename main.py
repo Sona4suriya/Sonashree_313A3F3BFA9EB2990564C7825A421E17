@@ -1,12 +1,32 @@
-# 1.1 Implement a recursive function to calculate the factorial of a given number.
+class bankaccount:
+ def __init__(self, account_number, account_holder_name,initial_balance=0.0):
 
-def factorial(n):
-    if n == 0:
-        return 1
-    else:
-        return n * factorial(n - 1)
+  self.__account_number= account_number
+  self.__account_holder_name =account_holder_name 
+  self.__account_balance =initial_balance 
 
+ def deposit(self, amount):
+  if amount > 0:
+    self.__account_balance += amount
+    print("deposited Rs{}. New balance:Rs{}".format(amount, self.__account_balance))
 
-num = int(input("Enter a number: "))
-result = factorial(num)
-print(f"The factorial of {num} is {result}")
+  else:
+     print("invalid deposit amount.Please deposit a positive amount.")
+
+ def withdraw(self, amount):
+   if amount > 0 and amount<= self.__account_balance: 
+    self.__account_balance -= amount
+    print("withdraw Rs {}. New balance:Rs {}".format(amount, self.__account_balance))
+
+   else:
+     print("invalid withdrawal amount or insuffient balance.")
+
+ def display_balance (self):
+  print("account balance for {} (account#{}):Rs {}".format(self.__account_holder_name, self.__account_number, self.__account_balance))
+
+account=bankaccount(account_number="987654321",account_holder_name="jai",initial_balance=6000.0)
+
+account.display_balance()
+account.deposit (500.0)
+account.withdraw (200.0)
+account.display_balance( )
